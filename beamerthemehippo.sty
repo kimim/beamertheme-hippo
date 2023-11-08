@@ -14,12 +14,12 @@
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-% This file is part of beamertheme-kimim.
+% This file is part of beamertheme-hippo.
 
 % If problems/bugs are found or enhancements are desired, please contact
-% me over: https://github.com/kimim/latex-beamer-kimim
+% me over: https://github.com/kimim/latex-beamer-hippo
 
-\ProvidesPackage{beamerthemekimim}[v2.0.0]
+\ProvidesPackage{beamerthemehippo}[v2.0.0]
 
 %% Include SVG in PDF
 %% just set the inkscape bin path in PATH
@@ -55,7 +55,7 @@
 
 \newcommand{\drawbg}{
   \begin{tikzpicture}
-    \fill[left color=\beamerlogocolor,right color=white,shading angle=90] (0,0) rectangle (\paperwidth,-0.65\paperheight);
+    \fill[left color=\beamerlogocolor,right color=white,shading angle=90] (0,0) rectangle (\paperwidth,-0.6\paperheight);
     \begin{scope}[shift={(0.3\paperheight,-0.3\paperheight)}]
       \fill[red!30!white,semitransparent]   ( 90:0.06\paperheight) circle (0.1\paperheight);
       \fill[green!30!white,semitransparent] (210:0.06\paperheight) circle (0.1\paperheight);
@@ -88,27 +88,34 @@
 
 %\let\oldcolumns\columns
 %\renewcommand\columns[1][t]{\oldcolumns[#1]}
+
+\let\oldappendix\appendix
+\renewcommand\appendix{
+  \oldappendix
+  \begin{frame}[plain,noframenumbering]
+    \centering
+    \drawlogo{0.5}
+  \end{frame}
+}
+
 \setlength{\parskip}{5pt} %% set paragraph skip
 \setlength\baselineskip{1.2em}
 
 \mode<presentation>
-
-\DeclareOptionBeamer{darkmode}{\PassOptionsToPackage{darkmode}{beamercolorthemekimim}}
-\DeclareOptionBeamer{nomaxslides}{\PassOptionsToPackage{nomaxslides}{beamerouterthemekimim}}
-\DeclareOptionBeamer{hasfooterlogo}{\PassOptionsToPackage{hasfooterlogo}{beamerouterthemekimim}}
-\DeclareOptionBeamer{hasfooter}{\PassOptionsToPackage{hasfooter}{beamerouterthemekimim}}
-\DeclareOptionBeamer{customfont}{\PassOptionsToPackage{customfont}{beamerfontthemekimim}}
-\DeclareOptionBeamer{customlogo}{\PassOptionsToPackage{customlogo}{beamerouterthemekimim}}
-\DeclareOptionBeamer{custombg}{\PassOptionsToPackage{custombg}{beamerinnerthemekimim}}
-\DeclareOptionBeamer{noframetitle}{\PassOptionsToPackage{noframetitle}{beamerouterthemekimim}}
+\DeclareOptionBeamer{darkmode}{\PassOptionsToPackage{darkmode}{beamercolorthemehippo}}
+\DeclareOptionBeamer{showmaxslides}{\PassOptionsToPackage{showmaxslides}{beamerouterthemehippo}}
+\DeclareOptionBeamer{nofooterlogo}{\PassOptionsToPackage{nofooterlogo}{beamerouterthemehippo}}
+\DeclareOptionBeamer{nofooter}{\PassOptionsToPackage{nofooter}{beamerouterthemehippo}}
+\DeclareOptionBeamer{customfont}{\PassOptionsToPackage{customfont}{beamerfontthemehippo}}
+%\DeclareOptionBeamer{noto}{\PassOptionsToPackage{noto}{beamerfontthemehippo}}
 
 \ProcessOptionsBeamer
 
 % Settings
-\usefonttheme{kimim}
-\usecolortheme{kimim}
-\useoutertheme{kimim}
-\useinnertheme{kimim}
+\usefonttheme{hippo}
+\usecolortheme{hippo}
+\useoutertheme{hippo}
+\useinnertheme{hippo}
 \RequirePackage{hyperref}
 \hypersetup{colorlinks = true, urlcolor = \beamerlinkcolor, linkcolor = black, citecolor = \beamerlinkcolor}
 
@@ -116,15 +123,15 @@
 \beamerdefaultoverlayspecification{}
 
 \def\maketitle{%
-  {%Set beamer template only works for the following frames.
-    % Would need a different way to support calling \maketitle in
-    % a frame environment
-    \setbeamertemplate{footline}{}%
-    \setbeamertemplate{frametitle}[largetitle]%
-    \begin{frame}[noframenumbering]%
-      \titlepage%
-    \end{frame}%
-  }
+	{%Set beamer template only works for the following frames.
+	% Would need a different way to support calling \maketitle in
+	% a frame environment
+		\setbeamertemplate{footline}{}%
+		\setbeamertemplate{frametitle}[largetitle]%
+		\begin{frame}[noframenumbering]%
+			\titlepage%
+		\end{frame}%
+	}
 }
 
 %% Try to add frame title to code listing

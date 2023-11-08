@@ -14,21 +14,14 @@
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-% This file is part of beamertheme-kimim.
+% This file is part of beamertheme-hippo.
 
 % If problems/bugs are found or enhancements are desired, please contact
-% me over: https://github.com/kimim/beamertheme-kimim
+% me over: https://github.com/kimim/beamertheme-hippo
 
-\ProvidesPackage{beamerinnerthemekimim}[v2.0.0]
+\ProvidesPackage{beamerinnerthemehippo}[v2.0.0]
+
 \mode<presentation>
-
-\newboolean{custombg}
-\setboolean{custombg}{false}
-\DeclareOptionBeamer{custombg}{\setboolean{custombg}{true}}
-
-\ProcessOptionsBeamer
-
-\renewcommand{\thempfootnote}{\ifcase\value{mpfootnote}\or\textasteriskcentered\or\textdagger\or\textdaggerdbl\fi}
 
 \def\itemsymbol{\raisebox{0.3ex}{$\circ$}}
 \def\subitemsymbol{\raisebox{0.3ex}{$\triangleright$}}
@@ -38,30 +31,30 @@
 \setlength\leftmarginii{1em}
 \setlength\leftmarginiii{1em}
 
-\defbeamertemplate*{section in toc}{kimim}{%
+\defbeamertemplate*{section in toc}{hippo}{%
   \hspace{0.5em} \inserttocsectionnumber.~\inserttocsection
 }
 
-\defbeamertemplate*{subsection in toc}{kimim}{%
+\defbeamertemplate*{subsection in toc}{hippo}{%
   \hspace{1.5em} \inserttocsectionnumber.\inserttocsubsectionnumber~\inserttocsubsection\par
 }
 
-\defbeamertemplate*{subsubsection in toc}{kimim}{%
+\defbeamertemplate*{subsubsection in toc}{hippo}{%
 }
 
-\defbeamertemplate*{itemize item}{kimim}{%
+\defbeamertemplate*{itemize item}{hippo}{%
   \usebeamerfont*{itemize/enumerate body}\itemsymbol
 }
 
-\defbeamertemplate*{itemize subitem}{kimim}{%
+\defbeamertemplate*{itemize subitem}{hippo}{%
   \usebeamerfont*{itemize/enumerate subbody}\subitemsymbol
 }
 
-\defbeamertemplate*{itemize subsubitem}{kimim}{%
+\defbeamertemplate*{itemize subsubitem}{hippo}{%
   \usebeamerfont*{itemize/enumerate subsubbody}\subsubitemsymbol
 }
 
-\defbeamertemplate*{bibliography item}{kimim}{%
+\defbeamertemplate*{bibliography item}{hippo}{%
   \insertbiblabel
 }
 
@@ -71,17 +64,6 @@
 \setbeamertemplate{caption}{%
   \insertcaption%
 }
-
-%create template for block without title
-% https://tex.stackexchange.com/questions/26278
-\defbeamertemplate{block begin}{notitle}
-{
-  \usebeamerfont{normal text}%
-  \vskip \parskip
-  \begin{beamercolorbox}[colsep*=.75ex,vmode]{normal text}%
-}
-
-\setbeamertemplate{block begin}[notitle]
 
 \setbeamertemplate{quote begin}{
   \vskip 5pt
@@ -107,13 +89,12 @@
 
 \setbeamertemplate{background}{
   \ifnum\thepage=1%
-  %% use a 5:2 picture for title page background
-    \ifcustombg\includegraphics[width=1\paperwidth]{beamer/bg}\else\drawbg\fi
+  \drawbg
   \fi%
 }
 
 %% Template: Title page
-\defbeamertemplate*{title page}{kimim}[1][]
+\defbeamertemplate*{title page}{hippo}[1][]
 {
   \usebeamerfont{title}
   \vskip 190pt
@@ -121,7 +102,7 @@
     \begin{beamercolorbox}[wd=\textwidth]{title}%
       \inserttitle%
     \end{beamercolorbox}
-    \vskip -3pt
+    \vskip -5pt
     \begin{beamercolorbox}[wd=\textwidth]{subtitle}%
       \ifx\insertsubtitle\@empty%
       \else%
@@ -142,7 +123,7 @@
     \begin{beamercolorbox}[wd=.25\paperwidth, right, ht=.06\paperheight]{title}
       \vbox to .06\paperheight{%
         \vfill%
-          \ifcustomlogo\insertlogoimage{3}\else\drawlogo{0.15}\fi
+        \drawlogo{0.15}%
       }%
     \end{beamercolorbox}%
   \end{beamercolorbox}
@@ -152,14 +133,18 @@
       Document ID:
       \hspace{20pt}Revision:
       \hspace{10pt}Updated on: {\insertdate}}%
-      \vskip 12pt
+      \vskip 14pt
   \end{beamercolorbox}%
 }
 
 %% Template: Section Page
-\defbeamertemplate{section}{kimim}{%
+\defbeamertemplate{section}{hippo}{%
   \insertsectionnumber.\hspace*{1ex}\insertsection%
 }
+
+%% \AtBeginSection[]{
+%%   \frame[plain,noframenumbering]{\sectionpage}
+%% }
 
 \AtBeginSection[]{%
   \frame[noframenumbering]{
@@ -170,12 +155,4 @@
   }%
 }%
 
-\let\oldappendix\appendix
-\renewcommand\appendix{
-  \oldappendix
-  \begin{frame}[plain,noframenumbering]
-    \centering
-    \ifcustomlogo\insertlogoimage{8}\else\drawlogo{0.5}\fi
-  \end{frame}
-}
 \mode<all>

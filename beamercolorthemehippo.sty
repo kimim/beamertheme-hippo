@@ -14,12 +14,13 @@
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-% This file is part of beamertheme-kimim.
+% This file is part of beamertheme-hippo.
 
 % If problems/bugs are found or enhancements are desired, please contact
-% me over: https://github.com/kimim/beamertheme-kimim
+% me over: https://github.com/hippo/beamertheme-hippo
 
-\ProvidesPackage{beamercolorthemekimim}[v2.0.0]
+\ProvidesPackage{beamercolorthemehippo}[v2.0.0]
+\RequirePackage{ifthen}
 \mode<presentation>
 
 \newboolean{darkmode}
@@ -28,39 +29,39 @@
 \DeclareOptionBeamer{darkmode}{\setboolean{darkmode}{true}}
 \ProcessOptionsBeamer
 
-\definecolor{kimim@text@black}{RGB}{9,9,9}
-\definecolor{kimim@text@gray}{RGB}{113,113,113}
-\definecolor{kimim@text@whitergray}{RGB}{160,160,160}
-\definecolor{kimim@text@red}{RGB}{255,0,15}
-\definecolor{kimim@text@white}{RGB}{255,255,255}
-\definecolor{kimim@text@blockbg}{HTML}{f5f5f5}
-\definecolor{kimim@text@kimimblue}{HTML}{5577ff}
-\definecolor{kimim@text@blue}{HTML}{4169e1}
-\definecolor{kimim@text@navy}{HTML}{000080}
+\definecolor{hippo@text@black}{RGB}{9,9,9}
+\definecolor{hippo@text@gray}{RGB}{113,113,113}
+\definecolor{hippo@text@whitergray}{RGB}{160,160,160}
+\definecolor{hippo@text@red}{RGB}{255,0,15}
+\definecolor{hippo@text@white}{RGB}{255,255,255}
+\definecolor{hippo@text@blockbg}{HTML}{f5f5f5}
+\definecolor{hippo@text@hippoblue}{HTML}{5577ff}
+\definecolor{hippo@text@blue}{HTML}{4169e1}
+\definecolor{hippo@text@navy}{HTML}{000080}
 
-\ifdarkmode
-  \newcommand{\beamertextcolor}{kimim@text@white}%
-  \newcommand{\beamerbgcolor}{kimim@text@black}%
-  \newcommand{\beamerblockbgcolor}{kimim@text@blockbg}
-  \newcommand{\beamerfooterlinecolor}{kimim@text@gray}%
-  \newcommand{\beamerfootertextcolor}{kimim@text@whitergray}%
-  \newcommand{\beamerheadlinecolor}{kimim@text@white}
-  \newcommand{\beamersubtitlecolor}{kimim@text@navy}
-  \newcommand{\beameralertcolor}{kimim@text@red}
-  \newcommand{\beamerlinkcolor}{kimim@text@blue}
-  \newcommand{\beamerlogocolor}{kimim@text@kimimblue}
-\else%
-  \newcommand{\beamertextcolor}{kimim@text@black}%
-  \newcommand{\beamerbgcolor}{kimim@text@white}%
-  \newcommand{\beamerblockbgcolor}{kimim@text@blockbg}
-  \newcommand{\beamerfooterlinecolor}{kimim@text@whitergray}%
-  \newcommand{\beamerfootertextcolor}{kimim@text@gray}%
-  \newcommand{\beamerheadlinecolor}{kimim@text@black}
-  \newcommand{\beamersubtitlecolor}{kimim@text@blue}
-  \newcommand{\beameralertcolor}{kimim@text@red}
-  \newcommand{\beamerlinkcolor}{kimim@text@blue}
-  \newcommand{\beamerlogocolor}{kimim@text@kimimblue}
-\fi
+\ifthenelse{\boolean{darkmode}}{
+  \newcommand{\beamertextcolor}{hippo@text@white}%
+  \newcommand{\beamerbgcolor}{hippo@text@black}%
+  \newcommand{\beamerblockbgcolor}{hippo@text@blockbg}
+  \newcommand{\beamerfooterlinecolor}{hippo@text@gray}%
+  \newcommand{\beamerfootertextcolor}{hippo@text@whitergray}%
+  \newcommand{\beamerheadlinecolor}{hippo@text@black}
+  \newcommand{\beamersubtitlecolor}{hippo@text@navy}
+  \newcommand{\beameralertcolor}{hippo@text@red}
+  \newcommand{\beamerlinkcolor}{hippo@text@blue}
+  \newcommand{\beamerlogocolor}{hippo@text@hippoblue}
+}{%
+  \newcommand{\beamertextcolor}{hippo@text@black}%
+  \newcommand{\beamerbgcolor}{hippo@text@white}%
+  \newcommand{\beamerblockbgcolor}{hippo@text@blockbg}
+  \newcommand{\beamerfooterlinecolor}{hippo@text@whitergray}%
+  \newcommand{\beamerfootertextcolor}{hippo@text@gray}%
+  \newcommand{\beamerheadlinecolor}{hippo@text@black}
+  \newcommand{\beamersubtitlecolor}{hippo@text@blue}
+  \newcommand{\beameralertcolor}{hippo@text@red}
+  \newcommand{\beamerlinkcolor}{hippo@text@blue}
+  \newcommand{\beamerlogocolor}{hippo@text@hippoblue}
+}
 
 \setbeamercolor*{normal text}{fg=\beamertextcolor}
 \setbeamercolor*{alerted text}{fg=\beameralertcolor}
@@ -103,6 +104,6 @@
 \setbeamercolor*{bibliography entry note}{parent=normal text}
 
 \setbeamercolor*{caption name}{parent=normal text}
-\setbeamercolor{background canvas}{bg=\beamerbgcolor}
+\setbeamercolor{background canvas}{bg=}
 
 \mode<all>
