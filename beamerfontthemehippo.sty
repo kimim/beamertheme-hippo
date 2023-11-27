@@ -31,11 +31,8 @@
 
 \newboolean{customfont}
 \setboolean{customfont}{false}
-\newboolean{noto}
-\setboolean{noto}{false}
 
 \DeclareOptionBeamer{customfont}{\setboolean{customfont}{true}}
-\DeclareOptionBeamer{noto}{\setboolean{noto}{true}}
 \ProcessOptionsBeamer
 
 \RequirePackage{silence}
@@ -47,25 +44,13 @@
   \RequirePackage[T1]{fontenc}
 \fi
 
-%% \ifthenelse{\boolean{noto}}{%
-%%     % If Noto overwrites the fira fonts settings
-%%   \RequirePackage{Roboto}
-%% }{%
-%%     \ifthenelse{\boolean{customfont}}{%
-%%       % Load default fonts
-%%     }{%
-%%         % By default load Fira
-%%       \RequirePackage[sfdefault]{FiraSans}
-%%         \RequirePackage{FiraMono}
-%%     }
-%% }
-
-\RequirePackage[sfdefault]{Roboto}
-\RequirePackage{Roboto}
-
-%%\setmainfont{}
-%%\setsansfont{}
-%%\setmonofont{Consolas}
+\ifthenelse{\boolean{customfont}}{%
+  % Load default fonts
+}{%
+  % Use fira fonts
+  \RequirePackage[sfdefault]{FiraSans}
+  \RequirePackage{FiraMono}
+}
 
 \renewcommand\tiny{\fontsize{2pt}{4pt}\selectfont}
 \renewcommand\footnotesize{\fontsize{4pt}{6pt}\selectfont}
@@ -95,17 +80,17 @@
 \setbeamerfont{subsubsection in toc}{parent=subsection in toc}
 
 \setbeamerfont{block title}{size=\normalsize, series=\bfseries}
-\setbeamerfont{block body}{size=\small}
+\setbeamerfont{block body}{shape=\upshape, size=\small}
 \setbeamerfont{block title alerted}{parent=block title, size=\normalsize}
-\setbeamerfont{block body alerted}{size=\small}
+\setbeamerfont{block body alerted}{shape=\upshape, size=\small}
 \setbeamerfont{block title example}{parent=block title, size=\normalsize}
-\setbeamerfont{block body example}{size=\small}
+\setbeamerfont{block body example}{shape=\upshape, size=\small}
 \setbeamerfont{theorem title}{parent=block title, size=\normalsize}
-\setbeamerfont{theorem body}{size=\small}
+\setbeamerfont{theorem body}{shape=\upshape, size=\small}
 \setbeamerfont{example title}{parent=block title, size=\normalsize}
-\setbeamerfont{example body}{size=\small}
+\setbeamerfont{example body}{shape=\upshape, size=\small}
 \setbeamerfont{proof title}{parent=block title, size=\normalsize}
-\setbeamerfont{proof body}{size=\small}
+\setbeamerfont{proof body}{shape=\upshape, size=\small}
 
 \setbeamerfont{title}{size=\LARGE, series=\bfseries}
 \setbeamerfont{author}{series=\mdseries, size=\small}

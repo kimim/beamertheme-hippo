@@ -63,13 +63,13 @@
 % full linewidth should be used
 \newcommand{\logofooter}{\includesvg[width=.15\linewidth]{\institutepath}}
 
-\newcommand{\pageword}{Slide}
 \newcommand{\showpagenum}{%
-  \pageword{} \insertframenumber\ifthenelse{%
+  \insertframenumber\ifthenelse{%
     \boolean{showmaxslides}%
   }{%
     /\inserttotalframenumber%
-  }{}%
+  }{
+  }%
 }
 
 
@@ -147,44 +147,6 @@
   \begin{beamercolorbox}[sep=0pt, wd=\myfootbarmargin, ht=#1, dp=1ex]{footline}
   \end{beamercolorbox}%
   \begin{beamercolorbox}[sep=0pt, wd=\myfootbarlength, ht=#1, dp=1ex]{footline}
-    \hbox {
-      %% \ifbeamer@inappendix%
-      %% \vbox{\hsize \linewidth
-      %%   { \usebeamercolor[\beamerheadlinecolor]{normal text}\ \hrule }}%
-      %% \else%
-      %% %% the \setlength's should be put under else,
-      %% %% because \insertmainframenumber is 0 in appendix
-      %% \setlength{\myprogress@slot}{%
-      %%   \ifx\insertmainframenumber\@empty
-      %%     0\linewidth
-      %%   \else
-      %%     \ifnum \insertmainframenumber = 0
-      %%     0\linewidth
-      %%     \else
-      %%     \linewidth * \ratio{1 pt}{\insertmainframenumber pt}%
-      %%     \fi
-      %%   \fi
-      %% }%
-      %% \setlength{\myprogress@current}{%
-      %%   \myprogress@slot * \insertframenumber
-      %% }%
-      %% \setlength{\myprogress@completed}{%
-      %%   \myprogress@current - \myprogress@slot
-      %% }%
-      %% \setlength{\myprogress@remaining}{%
-      %%   \linewidth - \myprogress@current
-      %% }%
-      %% \vbox{\hsize \myprogress@completed
-      %%   { \usebeamercolor[\beamerfootertextcolor]{normal text}\ \hrule }}%
-      %% \vbox{\hsize \myprogress@slot
-      %%   { \usebeamercolor[\beamerlogocolor]{normal text}\ \hrule }}%
-      %% \vbox{\hsize \myprogress@remaining
-      %%   { \usebeamercolor[\beamerfootertextcolor]{normal text}\ \hrule }}%
-      %% \fi%
-
-      \vbox{\hsize \linewidth
-        { \usebeamercolor[\beamerfooterlinecolor]{normal text}\ \hrule }}%
-    }
     \leavevmode%
     #2%
   \end{beamercolorbox}%
@@ -201,10 +163,7 @@
       \usebeamerfont{footline}%
       \vbox to\myfooterheight{%
         \vfil%
-        %% \insertshorttitle{}
-        \today $\quad$ $~|~$ %
-        %% \insertshortauthor{} $\quad$%
-        %% \insertshortsubtitle{}%
+        \today $\quad$%
         \ifthenelse{\boolean{nofooterlogo}}{}{
           \showpagenum
         }\par%
