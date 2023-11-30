@@ -36,6 +36,13 @@
   \def\verbatim{\small\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
 \makeatother
 
+\makeatletter
+\newcommand*{\bdiv}{%
+  \nonscript\mskip-\medmuskip\mkern5mu%
+  \mathbin{\operator@font div}\penalty900\mkern5mu%
+  \nonscript\mskip-\medmuskip
+}
+\makeatother
 %% \BeforeBeginEnvironment{minted}{}
 %% \AfterEndEnvironment{minted}{}
 
