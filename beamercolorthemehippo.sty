@@ -37,6 +37,7 @@
 \definecolor{hippo@text@blockbg}{HTML}{f5f5f5}
 \definecolor{hippo@text@hippoblue}{HTML}{5577ff}
 \definecolor{hippo@text@blue}{HTML}{4169e1}
+\definecolor{hippo@text@slateblue}{HTML}{6a5acd}
 \definecolor{hippo@text@navy}{HTML}{000080}
 
 \ifthenelse{\boolean{darkmode}}{
@@ -49,6 +50,7 @@
   \newcommand{\beamersubtitlecolor}{hippo@text@navy}
   \newcommand{\beameralertcolor}{hippo@text@red}
   \newcommand{\beamerlinkcolor}{hippo@text@blue}
+  \newcommand{\beamerinternallinkcolor}{hippo@text@hippoblue}
   \newcommand{\beamerlogocolor}{hippo@text@hippoblue}
 }{%
   \newcommand{\beamertextcolor}{hippo@text@black}%
@@ -60,6 +62,7 @@
   \newcommand{\beamersubtitlecolor}{hippo@text@blue}
   \newcommand{\beameralertcolor}{hippo@text@red}
   \newcommand{\beamerlinkcolor}{hippo@text@blue}
+  \newcommand{\beamerinternallinkcolor}{hippo@text@hippoblue}
   \newcommand{\beamerlogocolor}{hippo@text@hippoblue}
 }
 
@@ -80,11 +83,11 @@
 \setbeamercolor*{subsection in toc}{parent=normal text}
 \setbeamercolor*{subsubsection in toc}{parent=normal text}
 
-\setbeamercolor{block title}{fg=\beamerheadlinecolor,bg=\beamerbgcolor}
+\setbeamercolor{block title}{fg=\beamerheadlinecolor,bg=\beamerblockbgcolor}
 \setbeamercolor{block body}{fg=\beamertextcolor,bg=\beamerblockbgcolor}
-\setbeamercolor{block title alerted}{fg=\beamerheadlinecolor,bg=\beamerbgcolor}
+\setbeamercolor{block title alerted}{fg=\beamerheadlinecolor,bg=\beamerblockbgcolor}
 \setbeamercolor{block body alerted}{fg=\beamertextcolor,bg=\beamerblockbgcolor}
-\setbeamercolor{block title example}{fg=\beamerheadlinecolor,bg=\beamerbgcolor}
+\setbeamercolor{block title example}{fg=\beamerheadlinecolor,bg=\beamerblockbgcolor}
 \setbeamercolor{block body example}{fg=\beamertextcolor,bg=\beamerblockbgcolor}
 
 \setbeamercolor{quotation}{fg=\beamertextcolor,bg=\beamerblockbgcolor}

@@ -30,18 +30,12 @@
 \makeatletter
   \def\maxheight#1{\ifdim\Gin@nat@height>#1 #1\else\Gin@nat@height\fi}
   \def\maxwidth#1{\ifdim\Gin@nat@width>#1 #1\else\Gin@nat@width\fi}
-\makeatother
-
-\makeatletter
   \def\verbatim{\small\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
-\makeatother
-
-\makeatletter
-\newcommand*{\bdiv}{%
-  \nonscript\mskip-\medmuskip\mkern5mu%
-  \mathbin{\operator@font div}\penalty900\mkern5mu%
-  \nonscript\mskip-\medmuskip
-}
+  \newcommand*{\bdiv}{%
+    \nonscript\mskip-\medmuskip\mkern5mu%
+    \mathbin{\operator@font div}\penalty900\mkern5mu%
+    \nonscript\mskip-\medmuskip
+  }
 \makeatother
 %% \BeforeBeginEnvironment{minted}{}
 %% \AfterEndEnvironment{minted}{}
@@ -105,8 +99,12 @@
   \end{frame}
 }
 
+%% paragraph skips
 \setlength{\parskip}{5pt} %% set paragraph skip
 \setlength\baselineskip{1.2em}
+\makeatletter
+\newcommand{\@minipagerestore}{\setlength{\parskip}{2pt}}
+\makeatother
 
 \mode<presentation>
 \DeclareOptionBeamer{darkmode}{\PassOptionsToPackage{darkmode}{beamercolorthemehippo}}
@@ -124,32 +122,26 @@
 \useoutertheme{hippo}
 \useinnertheme{hippo}
 \RequirePackage{hyperref}
-\hypersetup{colorlinks = true, urlcolor = \beamerlinkcolor, linkcolor = black, citecolor = \beamerlinkcolor}
+\hypersetup{colorlinks = true, urlcolor = \beamerlinkcolor,
+            linkcolor = \beamerinternallinkcolor,
+            citecolor = \beamerlinkcolor}
 
 \setbeamertemplate{navigation symbols}{}%
 \setbeamertemplate{theorems}[ams style]
-
+\addtobeamertemplate{theorem begin}{}{\setlength{\parskip}{0pt}}
+\setbeamertemplate{blocks}[rounded]
 \beamerdefaultoverlayspecification{}
 
 \def\maketitle{%
-	{%Set beamer template only works for the following frames.
-	% Would need a different way to support calling \maketitle in
-	% a frame environment
-		\setbeamertemplate{footline}{}%
-		\setbeamertemplate{frametitle}[largetitle]%
-		\begin{frame}[noframenumbering]%
-			\titlepage%
-		\end{frame}%
-	}
+  { % Set beamer template only works for the following frames.
+    % Would need a different way to support calling \maketitle in
+    % a frame environment
+    \setbeamertemplate{footline}{}%
+    \setbeamertemplate{frametitle}[largetitle]%
+    \begin{frame}[noframenumbering]%
+      \titlepage%
+    \end{frame}%
+  }
 }
-
-%% Try to add frame title to code listing
-%% \RequirePackage{framed}
-%% \definecolor{TFFrameColor}{HTML}{ffffff}
-%% \definecolor{TFTitleColor}{HTML}{000080}
-%% \let\mintedold=\minted
-%% \renewenvironment{minted}[2][]
-%%                  {\begin{titled-frame}{#2}\begin{minted}[#1]{#2}}
-%%                  {\end{minted}\end{titled-frame}}
 
 \mode<all>
