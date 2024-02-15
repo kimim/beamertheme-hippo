@@ -30,15 +30,15 @@
 \makeatletter
   \def\maxheight#1{\ifdim\Gin@nat@height>#1 #1\else\Gin@nat@height\fi}
   \def\maxwidth#1{\ifdim\Gin@nat@width>#1 #1\else\Gin@nat@width\fi}
-  \def\verbatim{\small\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
+  %% 15/Feb/2024: use smaller fontsize for verbatim, code results
+  \def\verbatim{\scriptsize\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
   \newcommand*{\bdiv}{%
     \nonscript\mskip-\medmuskip\mkern5mu%
     \mathbin{\operator@font div}\penalty900\mkern5mu%
     \nonscript\mskip-\medmuskip
   }
+  %%\def\verbatim@font{\scriptsize\ttfamily}
 \makeatother
-%% \BeforeBeginEnvironment{minted}{}
-%% \AfterEndEnvironment{minted}{}
 
 %% Add background with:
 \RequirePackage{wallpaper}
@@ -105,6 +105,8 @@
 \makeatletter
 \newcommand{\@minipagerestore}{\setlength{\parskip}{2pt}}
 \makeatother
+%% 15/Feb/2024: Reduce topsep of verbatim
+\AtBeginEnvironment{verbatim}{\setlength{\topsep}{0pt}}
 
 \mode<presentation>
 \DeclareOptionBeamer{darkmode}{\PassOptionsToPackage{darkmode}{beamercolorthemehippo}}
