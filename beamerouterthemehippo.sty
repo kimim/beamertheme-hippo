@@ -33,13 +33,15 @@
 \setboolean{showmaxslides}{true}
 \newboolean{nofooterlogo}
 \setboolean{nofooterlogo}{false}
-
 \newboolean{nofooter}
 \setboolean{nofooter}{false}
+\newboolean{noframetitle}
+\setboolean{noframetitle}{false}
 
 \DeclareOptionBeamer{showmaxslides}{\setboolean{showmaxslides}{true}}
 \DeclareOptionBeamer{nofooterlogo}{\setboolean{nofooterlogo}{true}}
 \DeclareOptionBeamer{nofooter}{\setboolean{nofooter}{true}}
+\DeclareOptionBeamer{noframetitle}{\setboolean{noframetitle}{true}}
 
 \ProcessOptionsBeamer
 
@@ -117,7 +119,9 @@
                 \ifx\insertframetitle\@empty
                     \inserttitle% if frametitle is empty
                 \else%
-                    \insertframetitle% if frametitle is not empty
+                    \ifthenelse{\boolean{noframetitle}}{}{
+                      \insertframetitle% if frametitle is not empty
+                    }
                 \fi%
             \else%
                 \insertsection% if section title is not empty
@@ -135,7 +139,9 @@
                 \insertframesubtitle%
             \fi%
         \else
-            \insertframetitle%
+            \ifthenelse{\boolean{noframetitle}}{}{
+              \insertframetitle% if frametitle is not empty
+            }
         \fi%
     \fi%
   \end{beamercolorbox}%
