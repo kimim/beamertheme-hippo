@@ -37,11 +37,14 @@
 \setboolean{nofooter}{false}
 \newboolean{noframetitle}
 \setboolean{noframetitle}{false}
+\newboolean{customlogo}
+\setboolean{customlogo}{false}
 
 \DeclareOptionBeamer{showmaxslides}{\setboolean{showmaxslides}{true}}
 \DeclareOptionBeamer{nofooterlogo}{\setboolean{nofooterlogo}{true}}
 \DeclareOptionBeamer{nofooter}{\setboolean{nofooter}{true}}
 \DeclareOptionBeamer{noframetitle}{\setboolean{noframetitle}{true}}
+\DeclareOptionBeamer{customlogo}{\setboolean{customlogo}{true}}
 
 \ProcessOptionsBeamer
 
@@ -63,7 +66,7 @@
 \newcommand{\logotitle}{\includesvg[width=.3\linewidth]{\headerpath}}
 % The footer will only use part of the space under the line. Usually almost the
 % full linewidth should be used
-\newcommand{\logofooter}{\includesvg[width=.15\linewidth]{\institutepath}}
+\newcommand{\logofooter}{\includesvg[width=.3\linewidth]{\institutepath}}
 
 \newcommand{\showpagenum}{%
   \insertframenumber\ifthenelse{%
@@ -180,7 +183,11 @@
     \begin{beamercolorbox}[sep=0mm, wd=.275\myfootbarlength,right, ht=\myfooterheight]{footline}
       \vbox to\myfooterheight{%
         \vskip 3pt%
-        \drawlogo{0.1}%
+        \ifthenelse{\boolean{customlogo}}{
+          \logofooter
+        }{
+          \drawlogo{0.1}
+        }
         \vfil%
       }%
     \end{beamercolorbox}%

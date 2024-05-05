@@ -95,7 +95,11 @@
   \oldappendix
   \begin{frame}[plain,noframenumbering]
     \centering
-    \drawlogo{0.5}
+    \ifthenelse{\boolean{customlogo}}{
+      \logoheader
+    }{
+      \drawlogo{0.5}
+    }
   \end{frame}
 }
 
@@ -114,6 +118,9 @@
 \DeclareOptionBeamer{nofooterlogo}{\PassOptionsToPackage{nofooterlogo}{beamerouterthemehippo}}
 \DeclareOptionBeamer{nofooter}{\PassOptionsToPackage{nofooter}{beamerouterthemehippo}}
 \DeclareOptionBeamer{noframetitle}{\PassOptionsToPackage{noframetitle}{beamerouterthemehippo}}
+\DeclareOptionBeamer{customlogo}{\PassOptionsToPackage{customlogo}{beamerouterthemehippo}}
+\DeclareOptionBeamer{customlogo}{\PassOptionsToPackage{customlogo}{beamerinnerthemehippo}}
+\DeclareOptionBeamer{custombg}{\PassOptionsToPackage{custombg}{beamerinnerthemehippo}}
 \DeclareOptionBeamer{customfont}{\PassOptionsToPackage{customfont}{beamerfontthemehippo}}
 
 \ProcessOptionsBeamer

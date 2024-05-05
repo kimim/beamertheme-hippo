@@ -20,8 +20,14 @@
 % me over: https://github.com/kimim/beamertheme-hippo
 
 \ProvidesPackage{beamerinnerthemehippo}[v2.0.0]
+\RequirePackage{ifthen}
 
 \mode<presentation>
+\newboolean{custombg}
+\setboolean{custombg}{false}
+\DeclareOptionBeamer{customlogo}{\setboolean{customlogo}{true}}
+\DeclareOptionBeamer{custombg}{\setboolean{custombg}{true}}
+\ProcessOptionsBeamer
 
 \def\itemsymbol{\raisebox{0.3ex}{$\circ$}}
 \def\subitemsymbol{\raisebox{0.3ex}{$\triangleright$}}
@@ -86,9 +92,16 @@
 }
 
 \setbeamertemplate{background}{
-  \ifnum\thepage=1%
-  \drawbg
-  \fi%
+  \ifthenelse{\boolean{custombg}}{
+    \ifnum\thepage=1%
+      \includegraphics[width=1\paperwidth]{beamer/bg}%
+    \fi
+  }{
+    %% 2024-05-04: don't know why ifthenelse cannot be inside ifnum.
+    \ifnum\thepage=1%
+      \drawbg
+    \fi%
+  }
 }
 
 %% Template: Title page
@@ -121,7 +134,11 @@
     \begin{beamercolorbox}[wd=.25\paperwidth, right, ht=.06\paperheight]{title}
       \vbox to .06\paperheight{%
         \vfill%
-        \drawlogo{0.15}%
+        \ifthenelse{\boolean{customlogo}}{
+          \logoheader
+        }{
+          \drawlogo{0.15}%
+        }
       }%
     \end{beamercolorbox}%
   \end{beamercolorbox}
