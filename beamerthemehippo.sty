@@ -106,11 +106,13 @@
 %% paragraph skips
 \setlength{\parskip}{5pt} %% set paragraph skip
 \setlength\baselineskip{1.2em}
+
 \makeatletter
 \newcommand{\@minipagerestore}{\setlength{\parskip}{2pt}}
 \makeatother
 %% 15/Feb/2024: Reduce topsep of verbatim
 \AtBeginEnvironment{verbatim}{\setlength{\topsep}{0pt}}
+\AtBeginEnvironment{item}{\setlength{\topsep}{0pt}}
 
 \mode<presentation>
 \DeclareOptionBeamer{darkmode}{\PassOptionsToPackage{darkmode}{beamercolorthemehippo}}

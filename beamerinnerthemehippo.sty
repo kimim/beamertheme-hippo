@@ -48,6 +48,16 @@
 \defbeamertemplate*{subsubsection in toc}{hippo}{%
 }
 
+\setbeamertemplate{itemize/enumerate body begin}{%
+  \setlength{\leftmargini}{0em}% Adjusts the left horizontal margin between margin and text
+  \setlength{\labelsep}{0mm}% Adjusts the space between bullet and text
+}
+\setbeamertemplate{itemize/enumerate subbody begin}{\setlength{\leftmarginii}{4cm}\setlength{\labelsep}{10mm}} % Adjust the left margin for nested lists
+\setbeamertemplate{itemize/enumerate subsubbody begin}{\setlength{\leftmarginiii}{2em}} % Adjust the left margin for further nested lists
+\setbeamertemplate{itemize item}[triangle] % Use a triangle bullet
+
+\setbeamertemplate{itemize body item}{\setlength{\itemsep}{10cm}} % Adjust the space for nested lists
+
 \defbeamertemplate*{itemize item}{hippo}{%
   \usebeamerfont*{itemize/enumerate body}\itemsymbol
 }
