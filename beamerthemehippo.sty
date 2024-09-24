@@ -107,12 +107,26 @@
 \setlength{\parskip}{5pt} %% set paragraph skip
 \setlength\baselineskip{1.2em}
 
+\newtheorem{result}{Result}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{therule}{Rule}[section]
+\newtheorem*{answer}{Answer}
+
+\BeforeBeginEnvironment{question}{%
+    \setbeamercolor{block title}{fg=\beamertextcolor,bg=\beamerquestionbgcolor}
+    \setbeamercolor{block body}{fg=\beamertextcolor,bg=\beamerquestionbgcolor}
+}
+\AfterEndEnvironment{question}{
+        \setbeamercolor{block title}{fg=\beamertextcolor,bg=\beamerblockbgcolor}
+        \setbeamercolor{block body}{fg=\beamertextcolor,bg=\beamerblockbgcolor}
+}
+
 \makeatletter
 \newcommand{\@minipagerestore}{\setlength{\parskip}{2pt}}
 \makeatother
 %% 15/Feb/2024: Reduce topsep of verbatim
 \AtBeginEnvironment{verbatim}{\setlength{\topsep}{0pt}}
-\AtBeginEnvironment{item}{\setlength{\topsep}{0pt}}
+%% \AtBeginEnvironment{itemize}{\setlength{\topsep}{0pt}} %% no use
 
 \mode<presentation>
 \DeclareOptionBeamer{darkmode}{\PassOptionsToPackage{darkmode}{beamercolorthemehippo}}

@@ -39,11 +39,13 @@
 \definecolor{hippo@text@blue}{HTML}{4169e1}
 \definecolor{hippo@text@slateblue}{HTML}{6a5acd}
 \definecolor{hippo@text@navy}{HTML}{000080}
+\definecolor{hippo@text@questionbg}{HTML}{f0e68c}
 
 \ifthenelse{\boolean{darkmode}}{
   \newcommand{\beamertextcolor}{hippo@text@white}%
   \newcommand{\beamerbgcolor}{hippo@text@black}%
   \newcommand{\beamerblockbgcolor}{hippo@text@blockbg}
+  \newcommand{\beamerquestionbgcolor}{hippo@text@questionbg}
   \newcommand{\beamerfooterlinecolor}{hippo@text@gray}%
   \newcommand{\beamerfootertextcolor}{hippo@text@whitergray}%
   \newcommand{\beamerheadlinecolor}{hippo@text@black}
@@ -56,6 +58,7 @@
   \newcommand{\beamertextcolor}{hippo@text@black}%
   \newcommand{\beamerbgcolor}{hippo@text@white}%
   \newcommand{\beamerblockbgcolor}{hippo@text@blockbg}
+  \newcommand{\beamerquestionbgcolor}{hippo@text@questionbg}
   \newcommand{\beamerfooterlinecolor}{hippo@text@whitergray}%
   \newcommand{\beamerfootertextcolor}{hippo@text@gray}%
   \newcommand{\beamerheadlinecolor}{hippo@text@black}
@@ -89,6 +92,7 @@
 \setbeamercolor{block body alerted}{fg=\beamertextcolor,bg=\beamerblockbgcolor}
 \setbeamercolor{block title example}{fg=\beamerheadlinecolor,bg=\beamerblockbgcolor}
 \setbeamercolor{block body example}{fg=\beamertextcolor,bg=\beamerblockbgcolor}
+\setbeamercolor{block body question}{fg=\beamertextcolor,bg=\beamerquestionbgcolor}
 
 \setbeamercolor{quotation}{fg=\beamertextcolor,bg=\beamerblockbgcolor}
 
