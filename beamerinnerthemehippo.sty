@@ -91,6 +91,15 @@
   \end{beamercolorbox}
 }
 
+\newenvironment{highlight}{%
+  \begin{textblock*}{.9\paperwidth}(.05\paperwidth, .8\paperheight)
+    \begin{beamercolorbox}[wd=0.9\paperwidth, rounded=true, center]{highlight}%
+      \usebeamerfont{highlight}
+}{%
+    \end{beamercolorbox}
+  \end{textblock*}
+}
+
 \setbeamertemplate{background}{
   \ifthenelse{\boolean{custombg}}{
     \ifnum\thepage=1%

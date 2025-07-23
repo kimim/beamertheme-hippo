@@ -107,7 +107,11 @@
 \setbeamerfont{itemize/enumerate subsubbody}{size=\small}
 
 \AtBeginEnvironment{columns}{%
-  \setbeamerfont{normal text}{size=\small}
+  \setbeamerfont{normal text}{family=\sffamily, size=\small, series=\mdseries}
+  \setbeamerfont{itemize/enumerate body}{parent=normal text, size=\small}
+  \setbeamerfont{itemize/enumerate body alerted}{parent=normal text, size=\small}
+  \setbeamerfont{itemize/enumerate subbody}{parent=itemize/enumerate body}
+  \setbeamerfont{itemize/enumerate subsubbody}{parent=itemize/enumerate subbody}
 }
 
 \mode<all>
